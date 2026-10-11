@@ -1,13 +1,984 @@
-<!HTML>
+
+<!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Hola mundo </title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Conecta UABC: herramientas y recursos para mejorar la organización, el bienestar y la vida universitaria.">
+  <title>Conecta UABC | Bienestar Universitario</title>
+
+  <style>
+    :root {
+      --azul: #063b70;
+      --azul-claro: #eaf3ff;
+      --verde: #36b89a;
+      --fondo: #f6f9fc;
+      --texto: #253449;
+      --blanco: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--fondo);
+      color: var(--texto);
+      line-height: 1.7;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    header {
+      background: var(--blanco);
+      padding: 15px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      box-shadow: 0 3px 15px #0000000d;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      color: var(--azul);
+      font-size: 23px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: var(--verde);
+    }
+
+    nav {
+      display: flex;
+      gap: 17px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: var(--texto);
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: var(--verde);
+    }
+
+    .hero {
+      padding: 85px 8%;
+      background: linear-gradient(125deg, #063b70, #126aa1);
+      color: white;
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      align-items: center;
+      gap: 45px;
+    }
+
+    .etiqueta {
+      display: inline-block;
+      padding: 7px 14px;
+      background: #ffffff20;
+      border: 1px solid #ffffff50;
+      border-radius: 30px;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 58px);
+      line-height: 1.12;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 span {
+      color: #70e2c4;
+    }
+
+    .hero p {
+      font-size: 17px;
+      margin-bottom: 28px;
+      max-width: 600px;
+      color: #e6f1ff;
+    }
+
+    .boton {
+      display: inline-block;
+      background: var(--verde);
+      color: #062f32;
+      padding: 13px 22px;
+      border-radius: 9px;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    .boton:hover {
+      transform: translateY(-3px);
+      background: #61d6b9;
+    }
+
+    .boton-blanco {
+      background: white;
+      color: var(--azul);
+      margin-left: 8px;
+    }
+
+    .hero-visual {
+      background: #ffffff12;
+      border: 1px solid #ffffff35;
+      border-radius: 25px;
+      padding: 35px;
+      text-align: center;
+    }
+
+    .hero-visual .emoji {
+      font-size: 85px;
+      margin-bottom: 15px;
+    }
+
+    .hero-visual h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .hero-visual p {
+      font-size: 15px;
+      margin-bottom: 0;
+    }
+
+    section {
+      padding: 75px 8%;
+      scroll-margin-top: 90px;
+    }
+
+    .titulo {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .titulo .mini {
+      color: #168d79;
+      font-size: 13px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .titulo h2 {
+      color: var(--azul);
+      font-size: clamp(27px, 4vw, 38px);
+      margin: 8px 0 12px;
+    }
+
+    .titulo p {
+      max-width: 720px;
+      margin: auto;
+      color: #637186;
+    }
+
+    .presentacion {
+      max-width: 850px;
+      margin: auto;
+      text-align: center;
+      font-size: 17px;
+    }
+
+    .presentacion strong {
+      color: var(--azul);
+    }
+
+    .rejilla {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .tarjeta {
+      background: white;
+      padding: 27px;
+      border-radius: 17px;
+      box-shadow: 0 5px 22px #18365c0a;
+      border: 1px solid #e8edf4;
+      transition: transform 0.2s;
+    }
+
+    .tarjeta:hover {
+      transform: translateY(-5px);
+    }
+
+    .icono {
+      width: 53px;
+      height: 53px;
+      background: var(--azul-claro);
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-size: 27px;
+      margin-bottom: 18px;
+    }
+
+    .tarjeta h3 {
+      color: var(--azul);
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .tarjeta p {
+      color: #637186;
+      font-size: 15px;
+    }
+
+    .consecuencia {
+      background: #fff6e9;
+      border-left: 4px solid #efa94b;
+      padding: 22px;
+      border-radius: 10px;
+      margin-top: 25px;
+    }
+
+    .consecuencia h3 {
+      color: #80501b;
+      margin-bottom: 5px;
+    }
+
+    .fondo-azul {
+      background: var(--azul-claro);
+    }
+
+    .datos-nota {
+      font-size: 13px;
+      color: #68778a;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .barra-contenedor {
+      margin: 18px 0;
+    }
+
+    .barra-texto {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 7px;
+    }
+
+    .barra {
+      height: 12px;
+      border-radius: 20px;
+      background: #e6edf5;
+      overflow: hidden;
+    }
+
+    .barra-relleno {
+      height: 100%;
+      background: var(--verde);
+      border-radius: 20px;
+    }
+
+    .recursos {
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+    }
+
+    .recurso {
+      background: white;
+      border: 1px solid #e2eaf3;
+      border-radius: 13px;
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .recurso .recurso-icono {
+      font-size: 28px;
+    }
+
+    .recurso h3 {
+      color: var(--azul);
+      font-size: 17px;
+    }
+
+    .recurso p {
+      color: #68778a;
+      font-size: 14px;
+    }
+
+    .recurso a {
+      color: #087d72;
+      font-weight: bold;
+    }
+
+    .herramienta a {
+      display: inline-block;
+      color: #087d72;
+      font-weight: bold;
+      margin-top: 13px;
+    }
+
+    .pasos {
+      counter-reset: pasos;
+    }
+
+    .paso {
+      position: relative;
+      padding-left: 60px;
+      margin-bottom: 25px;
+    }
+
+    .paso::before {
+      counter-increment: pasos;
+      content: counter(pasos);
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: var(--verde);
+      color: #063b42;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-weight: bold;
+    }
+
+    .paso h3 {
+      color: var(--azul);
+    }
+
+    .contacto {
+      background: linear-gradient(125deg, #063b70, #126aa1);
+      color: white;
+      text-align: center;
+      border-radius: 22px;
+      padding: 45px 25px;
+    }
+
+    .contacto h2 {
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+
+    .contacto p {
+      max-width: 700px;
+      margin: 0 auto 23px;
+      color: #e6f1ff;
+    }
+
+    .contacto .boton {
+      background: white;
+      color: var(--azul);
+    }
+
+    .referencias {
+      font-size: 14px;
+      color: #637186;
+    }
+
+    .referencias li {
+      margin: 13px 0;
+      overflow-wrap: anywhere;
+    }
+
+    .referencias a {
+      color: #087d72;
+    }
+
+    footer {
+      background: #092c4e;
+      color: white;
+      text-align: center;
+      padding: 28px 7%;
+      font-size: 14px;
+    }
+
+    footer p {
+      margin: 4px 0;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 65px 7%;
+      }
+
+      .hero-visual {
+        max-width: 500px;
+        width: 100%;
+        margin: auto;
+      }
+
+      .rejilla {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      header {
+        justify-content: center;
+      }
+
+      nav {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 580px) {
+      section {
+        padding: 55px 6%;
+      }
+
+      .rejilla {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        gap: 12px;
+      }
+
+      nav a {
+        font-size: 13px;
+      }
+
+      .hero {
+        padding: 55px 6%;
+      }
+
+      .boton-blanco {
+        margin: 12px 0 0;
+      }
+
+      .recurso {
+        align-items: flex-start;
+      }
+    }
+  </style>
 </head>
-<body> 
-     <header>
-     <h1> parte 3 del proyecto </h1>
-     </header>
+
+<body>
+
+  <!-- ENCABEZADO Y MENU -->
+  <header>
+    <a class="logo" href="#inicio">Conecta <span>UABC</span></a>
+
+    <nav aria-label="Navegación principal">
+      <a href="#inicio">Inicio</a>
+      <a href="#problema">El problema</a>
+      <a href="#datos">Datos</a>
+      <a href="#recursos">Recursos</a>
+      <a href="#herramientas">Herramientas</a>
+      <a href="#apoyo">Apoyo</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- INICIO -->
+    <section class="hero" id="inicio">
+      <div>
+        <span class="etiqueta">Bienestar y vida universitaria</span>
+
+        <h1>Tu vida universitaria, <span>más conectada.</span></h1>
+
+        <p>
+          La universidad es una etapa llena de oportunidades, pero también
+          de retos. Conecta UABC busca ayudarte a organizar tu tiempo,
+          cuidar tu bienestar y encontrar recursos útiles para tu vida
+          como estudiante.
+        </p>
+
+        <a class="boton" href="#recursos">Explorar recursos ↗</a>
+        <a class="boton boton-blanco" href="#problema">Conocer el problema</a>
+      </div>
+
+      <div class="hero-visual">
+        <div class="emoji">🎓💚</div>
+        <h3>Tu bienestar importa</h3>
+        <p>
+          Organizarte, pedir ayuda y cuidar de ti también forma parte
+          de tu formación universitaria.
+        </p>
+      </div>
+    </section>
+
+    <!-- PRESENTACION -->
+    <section id="presentacion">
+      <div class="titulo">
+        <span class="mini">¿Quiénes somos?</span>
+        <h2>Conoce Conecta UABC</h2>
+      </div>
+
+      <div class="presentacion">
+        <p>
+          <strong>Conecta UABC</strong> es una propuesta informativa
+          dirigida a estudiantes universitarios. Su objetivo es reunir
+          herramientas, información y recursos que contribuyan a mejorar
+          la organización académica y promover el bienestar emocional.
+        </p>
+        <br>
+        <p>
+          Queremos recordar que ser estudiante no significa tener todo
+          resuelto. Aprender a administrar el tiempo, reconocer el estrés
+          y buscar apoyo puede hacer una diferencia en nuestra experiencia
+          universitaria.
+        </p>
+      </div>
+    </section>
+
+    <!-- PROBLEMA -->
+    <section class="fondo-azul" id="problema">
+      <div class="titulo">
+        <span class="mini">Identificar para mejorar</span>
+        <h2>¿Cuál es el problema?</h2>
+        <p>
+          La carga académica, las responsabilidades personales y la falta
+          de organización pueden afectar el bienestar de los estudiantes.
+        </p>
+      </div>
+
+      <div class="rejilla">
+        <article class="tarjeta">
+          <div class="icono">😰</div>
+          <h3>Estrés académico</h3>
+          <p>
+            Aparece cuando las tareas, los exámenes y las responsabilidades
+            se acumulan y sentimos que no tenemos suficiente tiempo
+            para cumplir con todo.
+          </p>
+        </article>
+
+        <article class="tarjeta">
+          <div class="icono">🧠</div>
+          <h3>Ansiedad</h3>
+          <p>
+            La preocupación por las calificaciones, el futuro o el
+            rendimiento puede dificultar la concentración y hacer
+            que las actividades cotidianas se sientan más complicadas.
+          </p>
+        </article>
+
+        <article class="tarjeta">
+          <div class="icono">📅</div>
+          <h3>Mala organización</h3>
+          <p>
+            No planear las actividades, dejar las tareas para el último
+            momento o no establecer prioridades puede aumentar la presión
+            y provocar que olvidemos entregas importantes.
+          </p>
+        </article>
+      </div>
+
+      <div class="consecuencia">
+        <h3>¿Qué consecuencias puede tener?</h3>
+        <p>
+          Cansancio, falta de concentración, problemas de sueño,
+          desmotivación, dificultades académicas y menos tiempo para
+          descansar o convivir con otras personas. Estas consecuencias
+          no afectan a todos de la misma manera.
+        </p>
+      </div>
+    </section>
+
+    <!-- DATOS -->
+    <section id="datos">
+      <div class="titulo">
+        <span class="mini">Información para reflexionar</span>
+        <h2>La realidad estudiantil</h2>
+        <p>
+          Conocer las experiencias de los estudiantes ayuda a identificar
+          necesidades y pensar en posibles soluciones.
+        </p>
+      </div>
+
+      <div class="rejilla">
+        <article class="tarjeta">
+          <div class="icono">📊</div>
+          <h3>Encuesta estudiantil</h3>
+          <p>
+            Agrega aquí los resultados de una encuesta realizada a
+            estudiantes sobre estrés, organización del tiempo y bienestar.
+          </p>
+        </article>
+
+        <article class="tarjeta">
+          <div class="icono">🔎</div>
+          <h3>Identificar necesidades</h3>
+          <p>
+            Investiga cuáles son las dificultades más comunes y qué
+            herramientas utilizan los estudiantes para organizarse.
+          </p>
+        </article>
+
+        <article class="tarjeta">
+          <div class="icono">💡</div>
+          <h3>Proponer soluciones</h3>
+          <p>
+            A partir de los resultados, plantea acciones como planificar
+            tareas, establecer horarios de descanso y conocer los
+            servicios de apoyo disponibles.
+          </p>
+        </article>
+      </div>
+
+      <div class="tarjeta" style="margin-top: 25px;">
+        <h3>Ejemplo de resultados de una encuesta</h3>
+        <p>
+          Puedes utilizar esta sección para mostrar gráficamente las
+          respuestas de tus compañeros.
+        </p>
+
+        <div class="barra-contenedor">
+          <div class="barra-texto">
+            <span>Estudiantes que reportan estrés frecuente</span>
+            <span>— %</span>
+          </div>
+          <div class="barra">
+            <div class="barra-relleno" style="width: 0%;"></div>
+          </div>
+        </div>
+
+        <div class="barra-contenedor">
+          <div class="barra-texto">
+            <span>Estudiantes con dificultades para organizarse</span>
+            <span>— %</span>
+          </div>
+          <div class="barra">
+            <div class="barra-relleno" style="width: 0%;"></div>
+          </div>
+        </div>
+
+        <p class="datos-nota">
+          Importante: las barras están vacías intencionalmente. Sustituye
+          los guiones y los porcentajes por datos reales de tu encuesta.
+          No presentes cifras de ejemplo como resultados reales.
+        </p>
+      </div>
+    </section>
+
+    <!-- RECURSOS -->
+    <section class="fondo-azul" id="recursos">
+      <div class="titulo">
+        <span class="mini">Aprende a tu ritmo</span>
+        <h2>Recursos para estudiantes</h2>
+        <p>
+          Materiales que puedes agregar para informar y orientar a la
+          comunidad universitaria.
+        </p>
+      </div>
+
+      <div class="recursos">
+
+        <article class="recurso">
+          <div class="recurso-icono">🖼️</div>
+          <div>
+            <h3>Infografía sobre el estrés académico</h3>
+            <p>
+              Explica sus causas, consecuencias y algunas formas de
+              manejar las responsabilidades universitarias.
+            </p>
+            <a href="https://www.canva.com/" target="_blank"
+               rel="noopener noreferrer">Crear una infografía ↗</a>
+          </div>
+        </article>
+
+        <article class="recurso">
+          <div class="recurso-icono">🗺️</div>
+          <div>
+            <h3>Mapa conceptual</h3>
+            <p>
+              Organiza visualmente las relaciones entre el estrés,
+              la ansiedad, la organización y el bienestar.
+            </p>
+            <a href="https://www.canva.com/" target="_blank"
+               rel="noopener noreferrer">Crear un mapa conceptual ↗</a>
+          </div>
+        </article>
+
+        <article class="recurso">
+          <div class="recurso-icono">📽️</div>
+          <div>
+            <h3>Presentación interactiva</h3>
+            <p>
+              Incorpora una presentación de Genially con recomendaciones
+              para mejorar los hábitos de estudio.
+            </p>
+            <a href="https://genially.com/" target="_blank"
+               rel="noopener noreferrer">Crear en Genially ↗</a>
+          </div>
+        </article>
+
+        <article class="recurso">
+          <div class="recurso-icono">▶️</div>
+          <div>
+            <h3>Video educativo</h3>
+            <p>
+              Comparte un video confiable sobre organización del tiempo,
+              manejo del estrés o bienestar emocional.
+            </p>
+            <a href="https://www.youtube.com/" target="_blank"
+               rel="noopener noreferrer">Buscar videos ↗</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- HERRAMIENTAS -->
+    <section id="herramientas">
+      <div class="titulo">
+        <span class="mini">Organiza tu día</span>
+        <h2>Herramientas digitales</h2>
+        <p>
+          Aprovecha estas plataformas para planificar tus actividades,
+          trabajar en equipo y mantener tus materiales organizados.
+        </p>
+      </div>
+
+      <div class="rejilla">
+        <article class="tarjeta herramienta">
+          <div class="icono">🗓️</div>
+          <h3>Google Calendar</h3>
+          <p>
+            Programa exámenes, clases, tareas y tiempos de descanso
+            para tener una visión clara de tu semana.
+          </p>
+          <a href="https://calendar.google.com/" target="_blank"
+             rel="noopener noreferrer">Abrir Calendar ↗</a>
+        </article>
+
+        <article class="tarjeta herramienta">
+          <div class="icono">📁</div>
+          <h3>Google Drive</h3>
+          <p>
+            Guarda tus documentos, apuntes y trabajos en carpetas
+            para encontrarlos fácilmente.
+          </p>
+          <a href="https://drive.google.com/" target="_blank"
+             rel="noopener noreferrer">Abrir Drive ↗</a>
+        </article>
+
+        <article class="tarjeta herramienta">
+          <div class="icono">🎓</div>
+          <h3>Blackboard</h3>
+          <p>
+            Consulta tus cursos, instrucciones, materiales y actividades
+            si tu institución utiliza esta plataforma.
+          </p>
+          <a href="https://www.blackboard.com/" target="_blank"
+             rel="noopener noreferrer">Visitar Blackboard ↗</a>
+        </article>
+
+        <article class="tarjeta herramienta">
+          <div class="icono">💻</div>
+          <h3>Google Meet</h3>
+          <p>
+            Realiza reuniones virtuales con tus compañeros para
+            estudiar, resolver dudas o preparar proyectos.
+          </p>
+          <a href="https://meet.google.com/" target="_blank"
+             rel="noopener noreferrer">Abrir Meet ↗</a>
+        </article>
+
+        <article class="tarjeta herramienta">
+          <div class="icono">⏱️</div>
+          <h3>Técnica Pomodoro</h3>
+          <p>
+            Prueba estudiar durante 25 minutos y descansar 5 minutos.
+            Ajusta los intervalos a tus necesidades.
+          </p>
+          <a href="https://pomofocus.io/" target="_blank"
+             rel="noopener noreferrer">Probar temporizador ↗</a>
+        </article>
+
+        <article class="tarjeta herramienta">
+          <div class="icono">📝</div>
+          <h3>Lista de pendientes</h3>
+          <p>
+            Divide los trabajos grandes en pasos pequeños y marca
+            las actividades conforme las termines.
+          </p>
+          <a href="https://keep.google.com/" target="_blank"
+             rel="noopener noreferrer">Abrir Google Keep ↗</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ORGANIZACION -->
+    <section class="fondo-azul" id="organizacion">
+      <div class="titulo">
+        <span class="mini">Pequeños cambios</span>
+        <h2>¿Cómo puedes empezar?</h2>
+        <p>
+          No necesitas cambiar todos tus hábitos de un día para otro.
+          Comienza con acciones sencillas.
+        </p>
+      </div>
+
+      <div class="tarjeta pasos">
+        <div class="paso">
+          <h3>Organiza tus pendientes</h3>
+          <p>
+            Anota las fechas de entrega y distingue entre lo urgente
+            y lo que puedes realizar después.
+          </p>
+        </div>
+
+        <div class="paso">
+          <h3>Establece horarios realistas</h3>
+          <p>
+            Reserva tiempo para estudiar, comer, dormir, convivir
+            y realizar actividades que disfrutes.
+          </p>
+        </div>
+
+        <div class="paso">
+          <h3>Toma descansos</h3>
+          <p>
+            Hacer pausas puede ayudarte a recuperar la concentración.
+            Evita descuidar tus necesidades básicas por estudiar.
+          </p>
+        </div>
+
+        <div class="paso">
+          <h3>Pide apoyo cuando lo necesites</h3>
+          <p>
+            Habla con alguien de confianza, consulta a tus docentes
+            o busca orientación profesional si las dificultades
+            te están afectando.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- APOYO -->
+    <section id="apoyo">
+      <div class="titulo">
+        <span class="mini">No estás solo</span>
+        <h2>Servicios y apoyo universitario</h2>
+        <p>
+          La comunidad universitaria puede ser una fuente de orientación
+          cuando aparecen dificultades académicas o personales.
+        </p>
+      </div>
+
+      <div class="rejilla">
+        <article class="tarjeta">
+          <div class="icono">💚</div>
+          <h3>Apoyo psicológico</h3>
+          <p>
+            Infórmate sobre los servicios de orientación psicológica
+            disponibles en tu campus y cómo solicitar atención.
+          </p>
+        </article>
+
+        <article class="tarjeta">
+          <div class="icono">🤝</div>
+          <h3>Tutorías académicas</h3>
+          <p>
+            Consulta si tu facultad ofrece tutorías, asesorías
+            o acompañamiento para resolver dudas académicas.
+          </p>
+        </article>
+
+        <article class="tarjeta">
+          <div class="icono">🏫</div>
+          <h3>Orientación universitaria</h3>
+          <p>
+            Acude a las oficinas de atención estudiantil de tu campus
+            para preguntar por becas, servicios y recursos disponibles.
+          </p>
+        </article>
+      </div>
+
+      <div class="contacto" style="margin-top: 35px;">
+        <h2>Da el primer paso</h2>
+        <p>
+          Si necesitas ayuda, puedes comenzar preguntando en tu facultad
+          por los servicios disponibles. No tienes que resolverlo todo
+          por tu cuenta.
+        </p>
+        <a class="boton"
+           href="https://www.uabc.mx/"
+           target="_blank"
+           rel="noopener noreferrer">
+          Visitar el sitio oficial de UABC ↗
+        </a>
+      </div>
+
+      <p class="datos-nota">
+        Conecta UABC es un proyecto informativo estudiantil.
+        No sustituye la atención psicológica ni representa un servicio
+        oficial de la universidad. Verifica la disponibilidad de cada
+        servicio con tu campus.
+      </p>
+    </section>
+
+    <!-- REFERENCIAS -->
+    <section class="fondo-azul" id="referencias">
+      <div class="titulo">
+        <span class="mini">Consulta y verifica</span>
+        <h2>Referencias y fuentes</h2>
+        <p>
+          Para respaldar el contenido académico, consulta fuentes
+          confiables y registra los datos de los materiales que utilices.
+        </p>
+      </div>
+
+      <div class="tarjeta">
+        <ul class="referencias">
+          <li>
+            Organización Mundial de la Salud. Información sobre salud mental.
+            <a href="https://www.who.int/es/health-topics/mental-health"
+               target="_blank" rel="noopener noreferrer">
+              Consultar fuente ↗
+            </a>
+          </li>
+          <li>
+            Organización Mundial de la Salud. Información sobre el estrés.
+            <a href="https://www.who.int/es/news-room/questions-and-answers/item/stress"
+               target="_blank" rel="noopener noreferrer">
+              Consultar fuente ↗
+            </a>
+          </li>
+          <li>
+            Universidad Autónoma de Baja California. Sitio institucional.
+            <a href="https://www.uabc.mx/"
+               target="_blank" rel="noopener noreferrer">
+              Consultar fuente ↗
+            </a>
+          </li>
+        </ul>
+
+        <p class="datos-nota">
+          Agrega las referencias completas en formato APA de las
+          investigaciones, encuestas, videos y materiales que realmente
+          utilices en tu proyecto. Verifica los datos bibliográficos
+          antes de entregar.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PIE DE PAGINA -->
+  <footer>
+    <p><strong>Conecta UABC</strong> | Bienestar y vida universitaria</p>
+    <p>Proyecto académico para promover la organización y el bienestar estudiantil.</p>
+    <p>© 2026 Conecta UABC</p>
+  </footer>
+
+</body>
 </html>
 
